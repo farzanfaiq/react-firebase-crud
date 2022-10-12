@@ -1,5 +1,5 @@
 import {db} from "../firebase";
-import {collection, addDoc, Timestamp, query, orderBy, onSnapshot} from 'firebase/firestore'
+import {ref, set, get, update, remove, child} from 'firebase/database'
 
 class UsersDataService {
     
@@ -8,19 +8,19 @@ class UsersDataService {
     }
 
     async create(payload) {
-        return await addDoc(collection(db, 'users'), payload);   
+        return await set(ref(db, 'users'), payload);   
     }
 
     async update(key, value) {
-        return db.child(key).update(value);
+        //return db.child(key).update(value);
     }
 
     async delete(key) {
-        return db.child(key).remove();
+        //return db.child(key).remove();
     }
 
     async deleteAll() {
-        return db.remove();
+        //return db.remove();
     }
 }
 
